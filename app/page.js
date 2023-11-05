@@ -1,6 +1,5 @@
 "use client";
 import StartButton from "./StartButton";
-import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import {useRef} from 'react';
 import "./styles.css";
@@ -10,15 +9,6 @@ import AdviceButton from "@/app/AdviceButton";
 import AboutButton from "@/app/AboutButton";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, CategoryScale, LinearScale, BarElement } from "chart.js";
 import {Bar, Pie} from "react-chartjs-2";
-
-const firebaseConfig = {
-    apiKey: "AIzaSyBl_iuClcP2JLNYlMsim_M9GkUp3Ob6moo",
-    authDomain: "hackutd-dda6a.firebaseapp.com",
-    projectId: "hackutd-dda6a",
-    storageBucket: "hackutd-dda6a.appspot.com",
-    messagingSenderId: "393903911592",
-    appId: "1:393903911592:web:771764b972033631a1c89d"
-};
 
 ChartJS.register(ArcElement, Tooltip, Legend, CategoryScale, LinearScale, BarElement);
 
