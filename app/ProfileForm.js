@@ -56,9 +56,11 @@ export default function ProfileForm() {
                         const studentLoanPayments = form.getValues().studentLoanPaymnets;
                         const ltv = Math.floor(appraisalValue / downPayment);
                         const dti = Math.ceil(grossMonthlyIncome / (carPayment + creditCardPayment + monthlyMortgagePayment));
+                        const dtiMortgage = Maht.ceil(grossMonthlyIncome / monthlyMortgagePayment);
                         const fedti = monthlyMortgagePayment / grossMonthlyIncome;
 
                         if (form.getValues().creditScore < 640) alert("No.");
+                        else if (dti > 0.43 || dtiMortgage > 0.28) alert("No.");
                         else if (ltv < 0.80) alert("LTV is above threshold PMI might occur Suggest increase down payment or find cheaper house.");
                         else if (fedti <= 0.28) alert("It's advised to with a higher down payment or lower house price to get cheaper mortgage.")
                         else alert("Enjoy your new house!");
