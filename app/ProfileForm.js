@@ -23,7 +23,7 @@ const formSchema = z.object({
     studentLoanPayments: z.number().min(0, {message: "Student loan payments must be at least 0."}).default(0),
 });
 
-export default function ProfileForm() {
+const ProfileForm = () => {
     const form = useForm({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -40,7 +40,7 @@ export default function ProfileForm() {
     });
 
     return (
-        <div className="max-w-2xl mx-auto my-12 ">
+        <div className="max-w-2xl mx-auto my-12 rounded">
             <Form {...form}>
                 <form
                     onSubmit={() => {
@@ -68,13 +68,13 @@ export default function ProfileForm() {
                     }
                     }
 
-                    className="space-y-8 space-x-4 grid grid-flow-row grid-cols-3 content-center justify-center items-center"
+                    className=" space-y-8 space-x-4 grid grid-flow-row grid-cols-3 content-center justify-center items-center"
                 >
                     <FormField
                         control={form.control}
                         name="creditScore"
                         render={({field: {value, onChange}}) => (
-                            <FormItem className={"justify-self-center"}>
+                            <FormItem className={"justify-self-center p-4"}>
                                 <FormLabel className={"items-center"}>Credit Score: {form.getValues().creditScore}</FormLabel>
                                 <FormControl>
                                     <Slider
@@ -97,7 +97,7 @@ export default function ProfileForm() {
                         control={form.control}
                         name="downPayment"
                         render={({field}) => (
-                            <FormItem>
+                            <FormItem className={"justify-around p-4"}>
                                 <FormLabel>Down payment</FormLabel>
                                 <FormControl>
                                     <Input placeholder="0" {...field} />
@@ -111,7 +111,7 @@ export default function ProfileForm() {
                         control={form.control}
                         name="appraisedValue"
                         render={({field}) => (
-                            <FormItem>
+                            <FormItem className={"p-4"}>
                                 <FormLabel>Appraised value</FormLabel>
                                 <FormControl>
                                     <Input placeholder="0" {...field} />
@@ -125,7 +125,7 @@ export default function ProfileForm() {
                         control={form.control}
                         name="creditCardPayment"
                         render={({field}) => (
-                            <FormItem>
+                            <FormItem className={"p-4"}>
                                 <FormLabel>Credit card payment</FormLabel>
                                 <FormControl>
                                     <Input placeholder="0" {...field} />
@@ -139,7 +139,7 @@ export default function ProfileForm() {
                         control={form.control}
                         name="carPayment"
                         render={({field}) => (
-                            <FormItem>
+                            <FormItem className={"p-4"}>
                                 <FormLabel>Car Payment</FormLabel>
                                 <FormControl>
                                     <Input placeholder="0" {...field} />
@@ -153,7 +153,7 @@ export default function ProfileForm() {
                         control={form.control}
                         name="grossMonthlyIncome"
                         render={({field}) => (
-                            <FormItem>
+                            <FormItem className={"p-4"}>
                                 <FormLabel>Gross Monthly Income</FormLabel>
                                 <FormControl>
                                     <Input placeholder="0" {...field} />
@@ -167,7 +167,7 @@ export default function ProfileForm() {
                         control={form.control}
                         name="loanAmount"
                         render={({field}) => (
-                            <FormItem>
+                            <FormItem className={"p-4"}>
                                 <FormLabel>Loan Amount</FormLabel>
                                 <FormControl>
                                     <Input placeholder="0" {...field} />
@@ -181,7 +181,7 @@ export default function ProfileForm() {
                         control={form.control}
                         name="monthlyMortgagePayment"
                         render={({field}) => (
-                            <FormItem>
+                            <FormItem className={"p-4"}>
                                 <FormLabel>Monthly Mortgage Payment</FormLabel>
                                 <FormControl>
                                     <Input placeholder="0" {...field} />
@@ -195,7 +195,7 @@ export default function ProfileForm() {
                         control={form.control}
                         name="studentLoanPayments"
                         render={({field}) => (
-                            <FormItem>
+                            <FormItem className={"p-4"}>
                                 <FormLabel>Student Loan Payments</FormLabel>
                                 <FormControl>
                                     <Input placeholder="0" {...field} />
@@ -205,10 +205,13 @@ export default function ProfileForm() {
                             </FormItem>
                         )}
                     />
-                    <Button type="submit">Submit</Button>
+                    <FormItem/>
+                    <Button className={"p-4 relative bottom-10 right-50"} type="submit">Submit</Button>
                 </form>
             </Form>
         </div>
     )
         ;
 }
+
+export default ProfileForm;

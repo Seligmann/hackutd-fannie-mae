@@ -5,8 +5,8 @@ const StartButton = ({div}) => {
 
     useEffect(() => {
         if (clicked) {
-            div.current.scrollIntoView({behavior: "smooth", block: "end"});
             setClicked(false);
+            div.current.scrollIntoView({behavior: "smooth"});
         }
     }, [clicked, div]);
 

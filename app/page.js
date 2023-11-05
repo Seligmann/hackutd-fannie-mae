@@ -4,6 +4,8 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import {useRef} from 'react';
 import "./styles.css";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { Pie } from 'react-chartjs-2';
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -31,6 +33,9 @@ firebase.initializeApp(firebaseConfig);
 
 export default function Home() {
   const div = useRef(null);
+  const sectionOne = useRef(null);
+  const sectionTwo = useRef(null);
+  const sectionThree = useRef(null);
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24 bg-slate-400">
@@ -42,40 +47,20 @@ export default function Home() {
               className="mt-6 text-lg text-center max-w-3xl mx-auto text-white">View home-buying statistics across
             the United States, or enter and edit your current finances to see your home buying potential.</p>
           </div>
-          <StartButton div={div}/>
-
-          <div className={"flex justify-center"}>
-            <NavigationMenu>
-              <NavigationMenuList>
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger>About</NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <NavigationMenuLink>Link</NavigationMenuLink>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger>What If Calculator</NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <NavigationMenuLink>FIX SCROLL TO CALCULATOR</NavigationMenuLink>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger>Helpful Resources</NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <NavigationMenuLink>FIX SCROLL TO RESOURCES</NavigationMenuLink>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
-              </NavigationMenuList>
-            </NavigationMenu>
+          <div className={"flex flex-row space-x-5 justify-center"}>
+            <StartButton div={sectionOne}/>
+            <StartButton div={sectionTwo}/>
+            <StartButton div={sectionThree}/>
           </div>
-
-
-          <div className={"pt-40 pb-20 px-20 space-x-20 flex flex-row"}>
-            <div className={"w-60 h-60 bg-slate-500"}></div>
-            <div className={"w-60 h-60 bg-slate-500"}></div>
-            <div className={"w-60 h-60 bg-slate-500"}></div>
+          <div ref={sectionOne}>
+            <ProfileForm/>
           </div>
-          <ProfileForm/>
+          <div ref={sectionTwo}>
+            <ProfileForm/>
+          </div>
+          <div ref={sectionThree}>
+            <ProfileForm/>
+          </div>
         </div>
       </div>
     </main>
