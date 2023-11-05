@@ -56,15 +56,14 @@ const ProfileForm = () => {
                         const studentLoanPayments = form.getValues().studentLoanPaymnets;
                         const ltv = Math.floor(appraisalValue / downPayment);
                         const dti = Math.ceil(grossMonthlyIncome / (carPayment + creditCardPayment + monthlyMortgagePayment));
-                        const dtiMortgage = Maht.ceil(grossMonthlyIncome / monthlyMortgagePayment);
+                        const dtiMortgage = Math.ceil(grossMonthlyIncome / monthlyMortgagePayment);
                         const fedti = monthlyMortgagePayment / grossMonthlyIncome;
 
-                        if (form.getValues().creditScore < 640) alert("No.");
-                        else if (dti > 0.43 || dtiMortgage > 0.28) alert("No.");
-                        else if (ltv < 0.80) alert("LTV is above threshold PMI might occur Suggest increase down payment or find cheaper house.");
-                        else if (fedti <= 0.28) alert("It's advised to with a higher down payment or lower house price to get cheaper mortgage.")
-                        else alert("Enjoy your new house!");
-
+                        if (form.getValues().creditScore < 640) alert("You need to improve your credit score before buying a house. See the \"Advice\" section below.");
+                        else if (dti > 0.43 || dtiMortgage > 0.28) alert("You need to improve your debt-to-income ratio. See the \"Advice\" section below.");
+                        else if (ltv < 0.80) alert("LTV is above threshold PMI might occur Suggest increase down payment or find cheaper house. See the \"Advice\" section below.");
+                        else if (fedti <= 0.28) alert("It's advised to with a higher down payment or lower house price to get cheaper mortgage. See the \"Advice\" section below.");
+                        else alert("You're in good financial standing!");
                     }
                     }
 
@@ -75,7 +74,8 @@ const ProfileForm = () => {
                         name="creditScore"
                         render={({field: {value, onChange}}) => (
                             <FormItem className={"justify-self-center p-4"}>
-                                <FormLabel className={"items-center"}>Credit Score: {form.getValues().creditScore}</FormLabel>
+                                <FormLabel className={"items-center"}>Credit
+                                    Score: {form.getValues().creditScore}</FormLabel>
                                 <FormControl>
                                     <Slider
                                         className={"w-40 justify-self-center"}
