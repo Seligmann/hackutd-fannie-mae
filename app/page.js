@@ -1,5 +1,7 @@
 "use client";
 import StartButton from "./StartButton";
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/firestore';
 import {useRef} from 'react';
 import "./styles.css";
 import {
@@ -14,6 +16,18 @@ import {
 } from "@/components/ui/navigation-menu"
 
 import ProfileForm from "@/app/ProfileForm";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBl_iuClcP2JLNYlMsim_M9GkUp3Ob6moo",
+  authDomain: "hackutd-dda6a.firebaseapp.com",
+  projectId: "hackutd-dda6a",
+  storageBucket: "hackutd-dda6a.appspot.com",
+  messagingSenderId: "393903911592",
+  appId: "1:393903911592:web:771764b972033631a1c89d"
+};
+
+firebase.initializeApp(firebaseConfig);
+// const db = firebase.firestore();
 
 export default function Home() {
   const div = useRef(null);
