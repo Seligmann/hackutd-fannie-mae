@@ -75,7 +75,7 @@ export default function ProfileForm() {
                         name="creditScore"
                         render={({field: {value, onChange}}) => (
                             <FormItem className={"justify-self-center"}>
-                                <FormLabel className={"items-center"}>Credit Score</FormLabel>
+                                <FormLabel className={"items-center"}>Credit Score: {form.getValues().creditScore}</FormLabel>
                                 <FormControl>
                                     <Slider
                                         className={"w-40 justify-self-center"}
