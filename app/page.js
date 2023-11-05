@@ -1,7 +1,6 @@
 "use client";
 import StartButton from "./StartButton";
 import {useRef} from 'react';
-import { Slider } from "@/components/ui/slider"
 import "./styles.css";
 import {
   NavigationMenu,
@@ -14,6 +13,7 @@ import {
   NavigationMenuViewport,
 } from "@/components/ui/navigation-menu"
 
+import ProfileForm from "@/app/ProfileForm";
 
 export default function Home() {
   const div = useRef(null);
@@ -61,11 +61,7 @@ export default function Home() {
             <div className={"w-60 h-60 bg-slate-500"}></div>
             <div className={"w-60 h-60 bg-slate-500"}></div>
           </div>
-          <div className={"pt-40 pb-20 px-20 space-x-20 flex flex-row"}>
-            <div className={"w-60 h-60 bg-slate-500"}></div>
-            <div className={"w-60 h-60 bg-slate-500"}></div>
-            <div className={"w-60 h-60 bg-slate-500"}></div>
-          </div>
+          <ProfileForm/>
         </div>
       </div>
     </main>

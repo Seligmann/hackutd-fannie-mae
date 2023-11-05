@@ -1,5 +1,5 @@
 .SliderRoot[data-orientation='horizontal'] {
     flex-direction: row;
-    width: 100px;
-    height: 100px;
+    width: 90px;
+    height: 90px;
 }
