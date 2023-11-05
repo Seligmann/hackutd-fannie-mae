@@ -8,6 +8,8 @@ import "./styles.css";
 import ProfileForm from "@/app/ProfileForm";
 import AdviceButton from "@/app/AdviceButton";
 import AboutButton from "@/app/AboutButton";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend, CategoryScale, LinearScale, BarElement } from "chart.js";
+import {Bar, Pie} from "react-chartjs-2";
 
 const firebaseConfig = {
     apiKey: "AIzaSyBl_iuClcP2JLNYlMsim_M9GkUp3Ob6moo",
@@ -18,8 +20,73 @@ const firebaseConfig = {
     appId: "1:393903911592:web:771764b972033631a1c89d"
 };
 
-firebase.initializeApp(firebaseConfig);
-// const db = firebase.firestore();
+ChartJS.register(ArcElement, Tooltip, Legend, CategoryScale, LinearScale, BarElement);
+
+const g1 = {
+    labels: [
+        'Red',
+        'Green'
+    ],
+    datasets: [{
+        label: 'Eligible Credit Scores',
+        data: [4028, 5972],
+        backgroundColor: [
+            'rgb(163, 16, 8)',
+            'rgb(35, 176, 56)'
+        ],
+        hoverOffset: 4
+    }]
+};
+
+const stackedChart = {
+    labels: "LTV RATIO LABEL",
+    datasets: [
+        {
+            label: 'LESS THAN 80%',
+            data: [50],
+            backgroundColor: 'rgb(53, 162, 235)'
+        },
+        {
+            label: 'OVER 80%',
+            data: [30],
+            backgroundColor: 'rgb(255, 99, 132)',
+        },
+    ]
+};
+
+const barChartOptions = {
+    plugins: {
+        title: {
+            display: true,
+            text: 'LTV ratio'
+        },
+    },
+    responsive: true,
+    scales: {
+        x: {
+            stacked: true,
+        },
+        y: {
+            stacked: true
+        }
+    }
+}
+
+const g3 = {
+    labels: [
+        'Red',
+        'Green'
+    ],
+    datasets: [{
+        label: 'Eligible Loans based on all factors',
+        data: [9115, 885],
+        backgroundColor: [
+            'rgb(163, 16, 8)',
+            'rgb(35, 176, 56)'
+        ],
+        hoverOffset: 4
+    }]
+};
 
 export default function Home() {
     const div = useRef(null);
@@ -31,7 +98,7 @@ export default function Home() {
         <main className="flex min-h-screen flex-col items-center justify-between p-24 bg-slate-400">
             <div className="App space-y-1000" ref={div}>
                 <div className="App-header">
-                    <div className="relative max-w-5xl mx-auto pt-20 sm:pt-24 lg:pt-32"><h1
+                    <div className="relative max-w-5xl mx-auto pt-10"><h1
                         className="font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight text-center text-white">Analyze
                         your home-buying potential with just a few minutes</h1><p
                         className="mt-6 text-lg text-center max-w-3xl mx-auto text-white">View home-buying statistics
@@ -43,6 +110,11 @@ export default function Home() {
                         <AboutButton div={sectionOne}/>
                         <StartButton div={sectionTwo}/>
                         <AdviceButton div={sectionThree}/>
+                    </div>
+                    <div className={"pt-20 pb-20 px-20 space-x-20 flex flex-row"}>
+                        <div className={"w-300 h-300 "}><Pie data={g1} /></div>
+                        <div className={"w-300 h-300 "}> <Bar options={barChartOptions} data={stackedChart}></Bar></div>
+                        <div className={"w-300 h-300 "}><Pie data={g3}/></div>
                     </div>
                     <div ref={sectionOne}>
                         <h2 className="text-4xl tracking-tight font-extrabold sm:text-5xl text-white text-center pt-20">About</h2>
