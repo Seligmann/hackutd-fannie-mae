@@ -1,12 +1,14 @@
 "use client";
-import StartButton from "@/app/StartButton";
+import StartButton from "./StartButton";
 import {useRef} from 'react';
+import { Slider } from "@/components/ui/slider"
+import "./styles.css";
 
 export default function Home() {
   const div = useRef(null);
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="flex min-h-screen flex-col items-center justify-between p-24 bg-slate-400">
       <div className="App space-y-1000" ref={div}>
         <div className="App-header">
           <div className="relative max-w-5xl mx-auto pt-20 sm:pt-24 lg:pt-32"><h1
