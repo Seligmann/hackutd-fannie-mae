@@ -3,6 +3,17 @@ import StartButton from "./StartButton";
 import {useRef} from 'react';
 import { Slider } from "@/components/ui/slider"
 import "./styles.css";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuIndicator,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  NavigationMenuViewport,
+} from "@/components/ui/navigation-menu"
+
 
 export default function Home() {
   const div = useRef(null);
@@ -18,6 +29,32 @@ export default function Home() {
             the United States, or enter and edit your current finances to see your home buying potential.</p>
           </div>
           <StartButton div={div}/>
+
+          <div className={"flex justify-center"}>
+            <NavigationMenu>
+              <NavigationMenuList>
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger>About</NavigationMenuTrigger>
+                  <NavigationMenuContent>
+                    <NavigationMenuLink>Link</NavigationMenuLink>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger>What If Calculator</NavigationMenuTrigger>
+                  <NavigationMenuContent>
+                    <NavigationMenuLink>FIX SCROLL TO CALCULATOR</NavigationMenuLink>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger>Helpful Resources</NavigationMenuTrigger>
+                  <NavigationMenuContent>
+                    <NavigationMenuLink>FIX SCROLL TO RESOURCES</NavigationMenuLink>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+              </NavigationMenuList>
+            </NavigationMenu>
+          </div>
+
 
           <div className={"pt-40 pb-20 px-20 space-x-20 flex flex-row"}>
             <div className={"w-60 h-60 bg-slate-500"}></div>
