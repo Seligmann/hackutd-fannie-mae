@@ -44,9 +44,28 @@ export default function ProfileForm() {
             <Form {...form}>
                 <form
                     onSubmit={() => {
-                        alert(form.getValues().creditScore);
-                        alert(form.getValues().downPayment);
-                    }}
+
+                        const appraisalValue = form.getValues().appraisedValue;
+                        const creditScore = form.getValues().creditScore;
+                        const downPayment = form.getValues().downPayment;
+                        const creditCardPayment = form.getValues().creditCardPayment;
+                        const carPayment = form.getValues().carPayment;
+                        const grossMonthlyIncome = form.getValues().grossMonthlyIncome;
+                        const loanAmount = form.getValues().loanAmount;
+                        const monthlyMortgagePayment = form.getValues().monthlyMortgagePayment;
+                        const studentLoanPayments = form.getValues().studentLoanPaymnets;
+                        const ltv = Math.floor(appraisalValue / downPayment);
+                        const dti = Math.ceil(grossMonthlyIncome / (carPayment + creditCardPayment + monthlyMortgagePayment));
+                        const fedti = monthlyMortgagePayment / grossMonthlyIncome;
+
+                        if (form.getValues().creditScore < 640) alert("No.");
+                        else if (ltv < 0.80) alert("LTV is above threshold PMI might occur Suggest increase down payment or find cheaper house.");
+                        else if (fedti <= 0.28) alert("It's advised to with a higher down payment or lower house price to get cheaper mortgage.")
+                        else alert("Enjoy your new house!");
+
+                    }
+                    }
+
                     className="space-y-8 space-x-4 grid grid-flow-row grid-cols-3 content-center justify-center items-center"
                 >
                     <FormField
@@ -188,5 +207,6 @@ export default function ProfileForm() {
                 </form>
             </Form>
         </div>
-    );
+    )
+        ;
 }
